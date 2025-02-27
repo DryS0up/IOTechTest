@@ -43,3 +43,16 @@ export const createItem = async (items:{title:string,body:string}) => {
     }
     return response.json()
 }
+
+//API function to update existing Item
+export const updateItem = async (id:number, items:{title:string,body:string}) => {
+    const response = await fetch(API_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(items)
+    })
+    if(!response.ok){
+        throw new Error("Failed to update Item")
+    }
+    return response.json()
+}

@@ -3,6 +3,8 @@ import {Items} from "../types"
 
 const API_URL = "https://jsonplaceholder.typicode.com/posts"
 
+
+//Hook for fetching items using useEffect
 export const useItems = () => {
     const [items, setitems] = useState<Items[]>([])
     const [error, seterror] = useState<string | null>(null)
@@ -26,6 +28,8 @@ export const useItems = () => {
       fetchItems()
       }, [])
     return{items,error,loading,setitems}
-
 }
   
+export const createItem = async (items:{title:string,body:string}) => {
+    
+}

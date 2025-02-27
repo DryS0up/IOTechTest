@@ -29,7 +29,17 @@ export const useItems = () => {
       }, [])
     return{items,error,loading,setitems}
 }
-  
+ 
+
+//API function to create a new Item
 export const createItem = async (items:{title:string,body:string}) => {
-    
+    const response = await fetch(API_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(items)
+    })
+    if(!response.ok){
+        throw new Error("Failed to Create Item")
+    }
+    return response.json()
 }

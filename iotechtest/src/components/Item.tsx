@@ -38,7 +38,10 @@ export function ItemComponent(props:ItemProp){
     }
     return(
         <div>
+            <div>
+            <p>{item.id}</p>
             <h2>{item.title}</h2>
+            </div>
             <p>{item.body}</p>
             <div>
                 <button onClick={()=>setisEditing(true)}>Edit</button>

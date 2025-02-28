@@ -50,15 +50,18 @@ export function ItemList(){
     }
 
     return (
-        <div>
-            <h1>Item List</h1>
-            <button onClick={toggleSortOrder}>
+        <div className="container mx-auto p-4">
+            <div className="flex justify-between">
+            <h1 className="text-2xl font-bold mb-4">Item List</h1>
+            <button onClick={toggleSortOrder} className="border bg-gray-700 p-5 rounded-xl shadow text-white ">
                 Sort by ID ({order === 'asc' ? 'Descending' : 'Ascending'})
             </button>
+            </div>
+            
             <NewItemForm onadd={handleAdd}/>
             {loading && <p>Loading Items ... </p>}
-            {error && <p>{error}</p>}
-            <div>
+            {error && <p className="text-red-500">{error}</p>}
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mt-4">
                 {items.map(item=>(
                     <ItemComponent
                     key={item.id}

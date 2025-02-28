@@ -27,25 +27,33 @@ export function ItemComponent(props:ItemProp){
     
     if(isEditing){
         return (
-            <div>
+            <div className="p-4 border rounded shadow flex flex-col space-y-4">
                 {error && <p>{error}</p>}
-                <input type="text" value={editTitle} onChange={e=> seteditTitle(e.target.value)}/>
-                <textarea value={editBody} onChange={e => seteditBody(e.target.value)}></textarea>
-                <button onClick={updateHandler}>Save</button>
-                <button onClick={()=>setisEditing(false)}>Cancel</button>
+                <input type="text" value={editTitle} onChange={e=> seteditTitle(e.target.value)} className="w-1/2 p-2 border rounded"/>
+                <textarea value={editBody} onChange={e => seteditBody(e.target.value)} className="w-1/2 p-2 border rounded "></textarea>
+                <div className="flex space-x-2">
+                    <button onClick={updateHandler} className="px-4 py-2 bg-blue-500 text-white rounded">
+                        Save
+                    </button>
+                    <button onClick={() => setisEditing(false)} className="px-4 py-2 bg-gray-500 text-white rounded">
+                        Cancel
+                    </button>
+                </div>
+
             </div>
         )
     }
     return(
-        <div>
-            <div>
-            <p>{item.id}</p>
-            <h2>{item.title}</h2>
+        <div className="p-4 border rounded shadow">
+            <div className="flex mb-4 font-bold">
+            <p className="mr-1 text-xl">{item.id}</p>
+            <p>|</p>
+            <h2 className="mx-1 text-xl">{item.title}</h2>
             </div>
-            <p>{item.body}</p>
+            <p className="mb-4 mr-10">{item.body}</p>
             <div>
-                <button onClick={()=>setisEditing(true)}>Edit</button>
-                <button onClick={()=> onDelete(item.id)}>Delete</button>
+                <button onClick={()=>setisEditing(true)} className="px-4 py-2 bg-gray-500 text-white rounded shadow mx-1">Edit</button>
+                <button onClick={()=> onDelete(item.id)} className="px-4 py-2 bg-red-500 text-white rounded shadow mx-1">Delete</button>
             </div>
         </div>
     )

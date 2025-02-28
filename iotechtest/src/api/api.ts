@@ -46,7 +46,7 @@ export const createItem = async (items:{title:string,body:string}) => {
 
 //API function to update existing Item
 export const updateItem = async (id:number, items:{title:string,body:string}) => {
-    const response = await fetch(API_URL,{
+    const response = await fetch(`${API_URL}/${id}`,{
         method:'PUT',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify(items)
@@ -54,13 +54,13 @@ export const updateItem = async (id:number, items:{title:string,body:string}) =>
     if(!response.ok){
         throw new Error("Failed to update Item")
     }
-    return response.json()
+    const updatedItem = await response.json()
+    return updatedItem
 }
 
 //API function to delete an Item
 export const deleteItem = async (id:number) => {
-    // eslint-disable-next-line no-template-curly-in-string
-    const response = await fetch('${API_URL}/${id}',{
+    const response = await fetch(`${API_URL}/${id}`,{
         method:'DELETE'
     })
     if (!response.ok){

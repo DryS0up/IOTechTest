@@ -27,4 +27,13 @@ export function NewItemForm(props:newItemFormProp){
         }
 
     }
+
+    return(
+        <form onSubmit={submitHandler}>
+            {error && <p>{error}</p>}
+            <input type="text" placeholder="title" value={title} onChange={i => setTitle(i.target.value)}/>
+            <textarea placeholder="Description" value={body} onChange={i => setbody(i.target.value)}></textarea>
+            <button type="submit">Add Item</button>
+        </form>
+    )
 }

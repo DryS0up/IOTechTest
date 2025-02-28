@@ -12,7 +12,8 @@ export function NewItemForm(props:newItemFormProp){
     const [body, setbody] = useState("")
     const [error, seterror] = useState("")
 
-    async function submitHandler() {
+    async function submitHandler(e:any) {
+        e.preventDefault()
         if(!title||!body){
             seterror("Please enter both Title and Description")
         }
